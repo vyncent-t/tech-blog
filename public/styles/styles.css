@@ -1,0 +1,85 @@
+* {
+	font-family: "Montserrat", sans-serif;
+}
+
+body {
+	background-color: beige;
+}
+
+.header {
+	background-color: rgb(6, 6, 182);
+	/* height: 100px;
+	margin: -10px -15px 0px -15px; */
+	min-height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.navbar {
+	width: 50%;
+	color: white;
+}
+
+.navbar ul {
+	display: flex;
+}
+
+.navbar ul > li {
+	font-size: larger;
+	list-style-type: none;
+	margin: 10px 10px 0px 4%;
+}
+.navbar ul li a {
+	font-size: 25px;
+	font-weight: 500;
+	text-decoration: none;
+	color: white;
+}
+
+.flag-marker {
+	background-color: beige;
+	border-radius: 20px;
+	margin: 10px 0px 1% 5%;
+	max-width: fit-content;
+	box-shadow: 8px 5px 5px 3px rgba(0, 0, 0, 0.4);
+}
+
+.flag-marker-text {
+	font-weight: 700;
+	font-size: 25px;
+	padding: 0px 15px 0px 15px;
+	color: rgb(6, 6, 182);
+}
+
+.post-feild {
+	display: flex;
+	flex-direction: column;
+}
+
+.post-card {
+	margin: 2%;
+	border: 5px solid blue;
+	display: flexbox;
+	height: 10%;
+	width: 90%;
+}
+
+.card-label {
+	background-color: blue;
+	color: rgb(255, 255, 255);
+	font-weight: 600;
+	font-size: 20px;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.card-label > span {
+	margin: 0.5em;
+}
+
+.card-body {
+	margin: 0.5em;
+}
