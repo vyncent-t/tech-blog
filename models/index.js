@@ -1,10 +1,11 @@
-const User = require("./User");
-const Post = require("./Post");
-const Comment = require("./Comment");
+const User = require("./user");
+const Post = require("./posts");
+const Comment = require("./comments");
 
 Post.belongsTo(User, {
     foreingKey: "user_id"
 });
+
 
 User.hasMany(Post, {
     foreingKey: "user_id",
@@ -12,9 +13,11 @@ User.hasMany(Post, {
     OnUpdate: "CASCADE"
 });
 
+
 Comment.belongsTo(Post, {
     foreingKey: "post_id"
 });
+
 
 Post.hasMany(Comment, {
     foreingKey: "post_id",
@@ -22,9 +25,11 @@ Post.hasMany(Comment, {
     OnUpdate: "CASCADE"
 });
 
+
 Comment.belongsTo(User, {
     foreingKey: "user_id",
 });
+
 
 User.hasMany(Comment, {
     foreingKey: "user_id",
