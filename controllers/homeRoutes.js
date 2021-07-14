@@ -75,6 +75,7 @@ router.get('/posts/:id', async (req, res) => {
 
         res.render('posts', {
             posts: posts,
+            post_username: posts.user.username,
             post_title: posts.post_title,
             post_date: posts.post_date,
             post_body: posts.post_body,
