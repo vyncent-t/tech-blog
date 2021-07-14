@@ -1,0 +1,27 @@
+<h1>{{post_title}}</h1>
+<div class="post-card">
+	<div class="card-label">
+		<span class="card-title">{{post_title}}</span>
+		<span class="card-info">{{post_date}}</span>
+	</div>
+	<div class="card-body">
+		<p>
+			{{post_body}}
+		</p>
+	</div>
+</div>
+{{#if comments}}
+	{{#each comments}}
+		<div class="post-card">
+			<div class="card-label">
+				<span class="card-title">{{this.user.username}}</span>
+				<span class="card-info">{{this.comment_date}}</span>
+			</div>
+			<div class="card-body">
+				<p>
+					{{this.comment_body}}
+				</p>
+			</div>
+		</div>
+	{{/each}}
+{{/if}}
