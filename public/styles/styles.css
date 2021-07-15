@@ -53,6 +53,12 @@ body {
 	padding: 0px 15px;
 	color: rgb(6, 6, 182);
 }
+.center-title {
+	font-weight: 700;
+	font-size: 25px;
+	padding: 0px 15px;
+	color: rgb(6, 6, 182);
+}
 
 .post-feild {
 	display: flex;
@@ -63,7 +69,7 @@ body {
 	margin: 2% 4%;
 	border: 5px solid blue;
 	display: flexbox;
-	height: 10%;
+	height: auto;
 	width: auto;
 }
 
@@ -82,7 +88,10 @@ body {
 	margin: 0.5em;
 }
 
-.card-title {
+.card-title > a {
+	font-size: 20px;
+	font-weight: 500;
+	text-decoration: none;
 	color: white;
 }
 

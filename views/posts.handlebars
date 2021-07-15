@@ -1,14 +1,23 @@
-<h1>{{post_title}}</h1>
+<div class="center-title">
+	<p>
+		Post
+	</p>
+</div>
 <div class="post-card">
 	<div class="card-label">
 		<span class="card-title">{{post_title}}</span>
-		<span class="card-info">{{post_date}}</span>
+		<span class="card-info">{{posts.user.username}} {{post_date}}</span>
 	</div>
 	<div class="card-body">
 		<p>
 			{{post_body}}
 		</p>
 	</div>
+</div>
+<div class="center-title">
+	<p>
+		Comments
+	</p>
 </div>
 {{#if comments}}
 	{{#each comments}}
