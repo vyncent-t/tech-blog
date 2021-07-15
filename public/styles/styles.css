@@ -60,6 +60,9 @@ body {
 	color: rgb(6, 6, 182);
 }
 
+.welcomepage {
+	display: flex;
+}
 .post-feild {
 	display: flex;
 	flex-direction: column;

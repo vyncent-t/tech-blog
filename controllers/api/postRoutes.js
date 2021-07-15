@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             attributes: ['id', 'post_title', 'post_body', 'post_date'],
@@ -31,7 +33,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findOne({
             where: { id: req.params.id },
@@ -69,15 +71,17 @@ router.post('/', async (req, res) => {
     try {
         let newDate = new Date();
         const postData = await Post.create({
+            user_id: 1,
+            post_date: newDate,
             post_title: req.body.title,
             post_body: req.body.body,
-            post_date: newDate,
-            user_id: req.body.user_id
+
+
         })
         res.status(200).json(postData)
     } catch (err) {
         console.log(err)
-        res.status(500).json(err);
+        res.status(400).json(err);
     }
 })
 
