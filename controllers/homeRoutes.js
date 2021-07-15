@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             attributes: ['id', 'post_title', 'post_body', 'post_date'],
@@ -41,7 +42,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/posts/:id', async (req, res) => {
+router.get('/posts/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findOne({
             where: { id: req.params.id },
@@ -86,5 +87,15 @@ router.get('/posts/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+router.get('/login', (req, res) => {
+
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
+});
 
 module.exports = router;

@@ -7,10 +7,23 @@ const sequelize = require("./config/connection");
 const routes = require("./controllers");
 
 
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.DB_PORT || 3000;
+
+const sess = {
+    secret: 'secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize,
+    }),
+};
+
+app.use(session(sess));
+
 
 app.engine("handlebars", exphbs({
     layoutsDir: 'views/layouts',

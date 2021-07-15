@@ -1,4 +1,41 @@
-<form action="">
-	<input type="text" />
-</form>
-<button type="submit" class="btn btn-primary">Submit</button>
+<div class="center-title">
+	<p>
+		Create a post
+	</p>
+</div>
+<div class="post-form">
+	<form>
+		<ul>
+			<li>
+				<label for="post_title">post title:</label>
+				<input type="text" id="post_title" name="post_title" />
+			</li>
+			<li>
+				<label for="post_body">message:</label>
+				<input type="text" id="post_body" name="post_body" />
+			</li>
+		</ul>
+		<button type="submit" id="new-post-form">Submit</button>
+	</form>
+</div>
+
+{{#if posts.length}}
+	<div class="center-title">
+		<p>
+			Your feed
+		</p>
+	</div>
+	{{#each posts}}
+		<div class="post-card">
+			<div class="card-label">
+				<span class="card-title"><a href="/posts/{{this.id}}">{{this.post_title}}</a></span>
+				<span class="card-info">{{this.user.username}} {{this.post_date}}</span>
+			</div>
+			<div class="card-body">
+				<p>
+					{{this.post_body}}
+				</p>
+			</div>
+		</div>
+	{{/each}}
+{{/if}}

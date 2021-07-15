@@ -84,6 +84,24 @@ body {
 	justify-content: space-between;
 }
 
+.post-form {
+	margin: 1em;
+	border: 5px solid blue;
+}
+
+.post-form ul > li {
+	margin: 1em;
+	font-size: 20px;
+	font-weight: 500;
+	list-style-type: none;
+}
+.post-form button {
+	margin: 1em 1em 1em 4em;
+	font-size: 20px;
+	font-weight: 500;
+	list-style-type: none;
+}
+
 .card-label > span {
 	margin: 0.5em;
 }
