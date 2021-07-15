@@ -6,12 +6,10 @@ async function newFormHandler(event) {
     const post_body = document.querySelector('#post_body').value;
     let newDate = new Date();
     const post_date = newDate
-    const user_id = 1
 
     const response = await fetch(`/api/post`, {
         method: 'POST',
         body: JSON.stringify({
-            user_id,
             post_date,
             post_title,
             post_body,
@@ -29,4 +27,4 @@ async function newFormHandler(event) {
     }
 };
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
