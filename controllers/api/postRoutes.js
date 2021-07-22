@@ -69,7 +69,10 @@ router.get('/:id', withAuth, async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        console.log(req.session.user_id)
+        console.log(`THE CURRENT USER ID SESSION CODE IS THIS: ${req.session.user_id}`)
+
+
+
         let newDate = new Date();
         const postData = await Post.create({
             user_id: req.session.user_id,
@@ -83,6 +86,7 @@ router.post('/', withAuth, async (req, res) => {
         res.status(400).json(err);
     }
 })
+
 
 router.put('/:id', async (req, res) => {
     try {

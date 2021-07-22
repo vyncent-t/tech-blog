@@ -12,9 +12,10 @@ router.post('/', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-
-            res.status(200).json(userData);
         });
+
+
+        res.status(200).json(userData);
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -26,57 +27,45 @@ router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                username: req.body.username,
-                password: req.body.password,
-            },
+                username: req.body.username
+            }
         });
-
         if (!userData) {
-            res.status(400).json({ message: 'Incorrect log in info. Please try again!' });
+            res.status(400)
+            console.log('Incorrect log in info. Please try again!')
             return;
         }
 
         const validPassword = await userData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect log in info. Please try again!' });
+            res.status(400);
+            console.log('Incorrect password. Please try again!')
             return;
         }
 
         req.session.save(() => {
             req.session.loggedIn = true;
-
-            res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
+        res.status(200).json({ user: userData, message: 'You are now logged in!' });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
 
-// Logout
-router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204).end();
-        });
-    } else {
-        res.status(404).end();
-    }
-});
-
-module.exports = router;
-
 
 // logout route
 
 router.post('/logout', (req, res) => {
-    if (req.session.logged_in) {
+    try {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.status(200);
+            console.log(`LOGGING OUT BYE`)
         });
-    } else {
-        res.status(404).end();
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 
