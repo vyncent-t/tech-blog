@@ -3,10 +3,18 @@ const postSelector = async (event) => {
     const postId = document.getElementById('postRef').innerText;
     const postID = parseInt(postId)
 
+    const post_title = document.querySelector('#post_title').value;
+    const post_body = document.querySelector('#post_body').value;
+    let newDate = new Date();
+    const post_date = newDate
+
+
     const response = await fetch(`/api/post/${postID}`, {
-        method: 'DELETE',
+        method: 'PUT',
         body: JSON.stringify({
-            id: postID
+            post_date,
+            post_title,
+            post_body,
         }),
         headers: {
             'Content-Type': 'application/json'

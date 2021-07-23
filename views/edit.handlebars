@@ -1,6 +1,6 @@
 <div class="center-title">
 	<p>
-		Create a post
+		Edit post
 	</p>
 </div>
 <div class="post-form">
@@ -19,31 +19,41 @@
 	</form>
 </div>
 
-{{#if posts.length}}
-	<div class="center-title">
+<div class="center-title">
+	<p>
+		Post
+	</p>
+</div>
+<div class="post-card">
+	<div class="card-label">
+		<span class="card-title">{{post_title}}</span>
+		<span class="card-info">{{posts.user.username}} {{post_date}}</span>
+	</div>
+	<div class="card-body">
 		<p>
-			Your past post
+			{{post_body}}
 		</p>
 	</div>
-	{{#each posts}}
+</div>
+<div class="center-title">
+	<p>
+		Comments
+	</p>
+</div>
+{{#if comments}}
+	{{#each comments}}
 		<div class="post-card">
 			<div class="card-label">
-				<span class="card-title"><a
-						href="dashboard/edit-post/{{this.id}}"
-						id="postPath"
-					>{{this.post_title}}</a></span>
-				<span class="card-info"><div>post ref#
-						<span id="postRef">{{this.id}}</span></div>{{this.user.username}}
-					{{this.post_date}}</span>
+				<span class="card-title">{{this.user.username}}</span>
+				<span class="card-info">{{this.comment_date}}</span>
 			</div>
 			<div class="card-body">
 				<p>
-					{{this.post_body}}
+					{{this.comment_body}}
 				</p>
-
-				<span class="deletePost"><button>delete</button></span>
 			</div>
 		</div>
 	{{/each}}
 {{/if}}
-<script src="/js/delete-post.js"></script>
+
+<script src="/public/js/edit-post.js"></script>

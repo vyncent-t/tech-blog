@@ -59,5 +59,49 @@ router.post('/create-post', withAuth, async (req, res) => {
 
 
 
+router.get('/edit-post/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findOne({
+            where: { id: req.params.id },
+            attributes: ['id', 'post_title', 'post_body', 'post_date'],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_body', 'post_id', 'user_id', 'comment_date'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            ]
+        });
+
+        if (!postData) {
+            res.status(404).json({ message: 'no post matching that id' })
+            console.log(err)
+            return
+        }
+
+
+        // follow
+        const posts = postData;
+        const comments = posts.comments.map((project) => project.get({ plain: true }));
+
+        res.render('edit', {
+            posts: posts,
+            post_title: posts.post_title,
+            post_date: posts.post_date,
+            post_body: posts.post_body,
+            comments: comments,
+        });
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;

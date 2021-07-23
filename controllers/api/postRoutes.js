@@ -33,42 +33,6 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/:id', withAuth, async (req, res) => {
-    try {
-        const postData = await Post.findOne({
-            where: { id: req.params.id },
-            attributes: ['id', 'post_title', 'post_body', 'post_date'],
-            include: [
-                {
-                    model: User,
-                    attributes: ['username']
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment_body', 'post_id', 'user_id', 'comment_date'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                }
-            ]
-        });
-
-        if (!postData) {
-            res.status(404).json({ message: 'no post matching that id' })
-            console.log(err)
-            return
-        }
-
-        res.status(200).json(postData)
-        res.render('dashboard', {
-        })
-    } catch (err) {
-        console.log(err)
-        res.status(500).json(err);
-    }
-})
-
 router.post('/', withAuth, async (req, res) => {
     try {
 
@@ -88,7 +52,7 @@ router.post('/', withAuth, async (req, res) => {
 })
 
 
-router.put('/:id', async (req, res) => {
+router.put('edit/:id', async (req, res) => {
     try {
         let newDate = new Date();
         const postData = await Post.update({
@@ -108,11 +72,16 @@ router.put('/:id', async (req, res) => {
         }
 
         res.status(200).json(postData)
+        res.render('posts')
+
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
     }
 })
+
+
+
 
 router.delete('/:id', async (req, res) => {
     try {
