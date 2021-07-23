@@ -1,38 +1,46 @@
 <div class="center-title">
 	<p>
-		Edit post
+		Edit your post
 	</p>
 </div>
 <div class="post-form">
-	<form id="new-post-form">
+	<form>
 		<ul>
 			<li>
 				<label for="post_title">post title:</label>
-				<input type="text" id="post_title" name="post_title" />
+				<input type="text" id="edit_title" name="post_title" />
 			</li>
 			<li>
 				<label for="post_body">message:</label>
-				<input type="text" id="post_body" name="post_body" />
+				<input type="text" id="edit_body" name="post_body" />
 			</li>
 		</ul>
-		<button type="submit">Submit</button>
+		<button type="submit" id="edit-button">Submit</button>
 	</form>
 </div>
 
 <div class="center-title">
 	<p>
-		Post
+		Old Post
 	</p>
 </div>
+
 <div class="post-card">
 	<div class="card-label">
-		<span class="card-title">{{post_title}}</span>
-		<span class="card-info">{{posts.user.username}} {{post_date}}</span>
+		<span class="card-title"><a
+				href="dashboard/edit-post/{{this.id}}"
+				id="postPath"
+			>{{this.post_title}}</a></span>
+		<span class="card-info"><div>post ref#
+				<span id="postRef">{{this.id}}</span></div>{{this.user.username}}
+			{{this.post_date}}</span>
 	</div>
 	<div class="card-body">
 		<p>
-			{{post_body}}
+			{{this.post_body}}
 		</p>
+
+		<span class="deletePost"><button>delete</button></span>
 	</div>
 </div>
 <div class="center-title">
@@ -56,4 +64,4 @@
 	{{/each}}
 {{/if}}
 
-<script src="/public/js/edit-post.js"></script>
+<script src="/js/edit-post.js"></script>

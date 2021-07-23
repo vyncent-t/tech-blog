@@ -93,6 +93,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
 
         res.render('edit', {
             posts: posts,
+            id: posts.id,
             post_title: posts.post_title,
             post_date: posts.post_date,
             post_body: posts.post_body,

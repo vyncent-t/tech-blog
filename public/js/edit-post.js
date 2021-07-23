@@ -1,15 +1,16 @@
-const postSelector = async (event) => {
+const postEditor = async (event) => {
+    debugger
     event.preventDefault();
     const postId = document.getElementById('postRef').innerText;
-    const postID = parseInt(postId)
+    const postID = postId
 
-    const post_title = document.querySelector('#post_title').value;
-    const post_body = document.querySelector('#post_body').value;
+    const post_title = document.querySelector('#edit_title').value.trim();
+    const post_body = document.querySelector('#edit_body').value.trim();
     let newDate = new Date();
     const post_date = newDate
 
 
-    const response = await fetch(`/api/post/${postID}`, {
+    const response = await fetch('/api/post/' + postID, {
         method: 'PUT',
         body: JSON.stringify({
             post_date,
@@ -23,11 +24,11 @@ const postSelector = async (event) => {
 
     if (response.ok) {
         console.log('not sure this work')
-        alert(`post deleted`)
+        alert(`post updated`)
         document.location.replace('/dashboard');
     } else {
         alert('Failed to travel');
     }
 }
 
-document.querySelector('.deletePost').addEventListener('click', postSelector);
+document.querySelector('#edit-button').addEventListener('click', postEditor);

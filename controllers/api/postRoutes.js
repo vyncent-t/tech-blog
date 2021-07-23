@@ -52,14 +52,13 @@ router.post('/', withAuth, async (req, res) => {
 })
 
 
-router.put('edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         let newDate = new Date();
         const postData = await Post.update({
             post_title: req.body.title,
             post_body: req.body.body,
-            post_date: newDate,
-            user_id: req.body.user_id
+            post_date: newDate
         }, {
             where: {
                 id: req.params.id
@@ -72,7 +71,7 @@ router.put('edit/:id', async (req, res) => {
         }
 
         res.status(200).json(postData)
-        res.render('posts')
+
 
     } catch (err) {
         console.log(err)
