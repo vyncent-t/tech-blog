@@ -61,6 +61,8 @@ router.get('/:id', withAuth, async (req, res) => {
         }
 
         res.status(200).json(postData)
+        res.render('dashboard', {
+        })
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
@@ -69,8 +71,6 @@ router.get('/:id', withAuth, async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        console.log(`THE CURRENT USER ID SESSION CODE IS THIS: ${req.session.user_id}`)
-
 
 
         let newDate = new Date();

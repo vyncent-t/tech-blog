@@ -42,7 +42,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 
-router.get('/posts/:id', withAuth, async (req, res) => {
+router.get('/post-content/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findOne({
             where: { id: req.params.id },
@@ -76,7 +76,6 @@ router.get('/posts/:id', withAuth, async (req, res) => {
 
         res.render('posts', {
             posts: posts,
-            post_username: posts.user.username,
             post_title: posts.post_title,
             post_date: posts.post_date,
             post_body: posts.post_body,
