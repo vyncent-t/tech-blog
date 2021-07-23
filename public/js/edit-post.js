@@ -4,17 +4,15 @@ const postEditor = async (event) => {
     const postId = document.getElementById('postRef').innerText;
     const postID = postId
 
-    const post_title = document.querySelector('#edit_title').value.trim();
-    const post_body = document.querySelector('#edit_body').value.trim();
-    let newDate = new Date();
-    const newpost_date = newDate
+    const edit_title = document.querySelector('#edit_title').value.trim();
+    const edit_body = document.querySelector('#edit_body').value.trim();
 
 
     const response = await fetch(`/api/post/edit/${postID}`, {
         method: 'PUT',
         body: JSON.stringify({
-            post_title: post_title,
-            post_body: post_body,
+            post_title: edit_title,
+            post_body: edit_body,
         }),
         headers: {
             'Content-Type': 'application/json'
