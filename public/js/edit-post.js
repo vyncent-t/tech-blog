@@ -1,5 +1,4 @@
 const postEditor = async (event) => {
-    debugger
     event.preventDefault();
     const postId = document.getElementById('postRef').innerText;
     const postID = postId

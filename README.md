@@ -1,0 +1,1 @@
+This app is meant to be a demo of a CRUD app which allows the user to post, edit, and delete content through comments and posts. The user is able to review post and their history of comments while also being able to delete and edit content created by them. This app

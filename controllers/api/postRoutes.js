@@ -35,8 +35,6 @@ router.get('/', withAuth, async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
     try {
-
-
         let newDate = new Date();
         const postData = await Post.create({
             user_id: req.session.user_id,
