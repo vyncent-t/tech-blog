@@ -52,11 +52,11 @@ router.post('/', withAuth, async (req, res) => {
 })
 
 
-router.put('/edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const postData = await Post.update({
-            post_title: req.body.title,
-            post_body: req.body.body,
+            post_title: req.body.post_title,
+            post_body: req.body.post_body,
         }, {
             where: {
                 id: req.params.id

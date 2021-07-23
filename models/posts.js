@@ -21,7 +21,7 @@ Post.init(
         },
         post_date: {
             type: DataTypes.DATEONLY,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isDate: true
             }

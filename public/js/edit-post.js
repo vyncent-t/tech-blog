@@ -8,9 +8,10 @@ const postEditor = async (event) => {
     const edit_body = document.querySelector('#edit_body').value.trim();
 
 
-    const response = await fetch(`/api/post/edit/${postID}`, {
+    const response = await fetch(`/api/post/${postID}`, {
         method: 'PUT',
         body: JSON.stringify({
+            post_id: postID,
             post_title: edit_title,
             post_body: edit_body,
         }),
