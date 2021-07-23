@@ -116,7 +116,6 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        let newDate = new Date();
         const postData = await Post.destroy(
             {
                 where: {
@@ -129,7 +128,8 @@ router.delete('/:id', async (req, res) => {
             return
         }
 
-        res.status(200).json(postData)
+        res.status(200)
+        res.json(postData)
     } catch (err) {
         console.log(err)
         res.status(500).json(err);

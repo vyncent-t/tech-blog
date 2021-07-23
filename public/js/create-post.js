@@ -1,5 +1,4 @@
 async function newFormHandler(event) {
-    debugger
     event.preventDefault();
 
     const post_title = document.querySelector('#post_title').value;
