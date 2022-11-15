@@ -10,4 +10,4 @@ About the tools
 This app is structured using the MVC practices while utilizing tools such as Sequelizing for database management using models, express for routing, handlebars for webpage templating, and bcrypt for password security.
 
 LINK:
-https://git.heroku.com/mini-tech-blog-project.git
+https://mini-tech-blog-project.herokuapp.com
